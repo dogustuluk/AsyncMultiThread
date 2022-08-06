@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Net.Http;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -23,10 +24,10 @@ namespace TaskFormApp
         {
 
         }
-        private void BtnReadFile_Click(object sender, EventArgs e)
+        private async void BtnReadFile_Click(object sender, EventArgs e)
         {
             //dosya okuma işlemini gerçekleştiriyoruz.
-            string data = ReadFile();
+            string data = await ReadFileAsync(); //await vermemizin sebebi ise alt satırda bu satırdan gelecek olan data ile ilgili işlem yaptığımız için.
 
             richTextBox1.Text = data;
         }
@@ -43,12 +44,37 @@ namespace TaskFormApp
             //bunu ->StreamReader s = new StreamReader()<- using ifadesi ile kullanalım ki işimiz bittikten sonra bunu bellekten atmış olsun.
             using (StreamReader s = new StreamReader("dosya.txt"))
             {
-                Thread.Sleep(5000); //test amaçlı kullanıyoruz.
+                Thread.Sleep(5000); //test amaçlı kullanıyoruz. //Ana thread'i bloklar bu.
                 data = s.ReadToEnd(); //datayı baştan sonra okur, geriye string döner.
             }
             return data;
             
         }
+
+        //asenkron metodumuzu yazalım
+        //asenkron metotlar geriye bir şey de dönebilirken dönmeme durumu da vardır.
+        //Eğer geriye bir şey dönmeyecek isek sadece "Task" keyword'ü kullanılır. Bu senkron metotlardaki void keyword'üne karşılık  gelir.
+        //Eğer geriye bir şey dönecek isek "Task<string, vs.>" kullanılır.
+        //>> void ->>>>Task /////////// string -> Task<string> karşılık gelir.
+
+        private async Task<string> ReadFileAsync()
+        {
+            string data = string.Empty;
+            using (StreamReader s = new StreamReader("dosya.txt"))
+            {
+                Task<string> mytask = s.ReadToEndAsync(); //Taahhüt işlemi bir nevi yapıldı
+
+                //
+                //
+                //
+                await Task.Delay(5000); //Ana thread'i bloklamaz.
+                data = await mytask; //burada aldığımız datayı geriye dönmüş oluyoruz. yukarıdaki boşluklarda metottan dönecek data ile ilgili olmayan başka işlemler yapılabilir.
+
+                return data;
+
+            }
+        }
+
        
     }
 }
