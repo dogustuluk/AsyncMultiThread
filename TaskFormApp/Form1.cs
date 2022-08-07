@@ -35,7 +35,7 @@ namespace TaskFormApp
             Task<String> okuma = ReadFileAsync(); //await kullanmadığımız için "ReadFileAsync()" metodunu çağırdığımız zaman okuma işlemi başlayacaktır.
 
             richTextBox2.Text = await new HttpClient().GetStringAsync("https://www.google.com"); //await ile alt satıra geçmesi, buraya datanın gelmesine bağlıdır. Mutlaka datanın gelmesini bekleyecek.
-
+            //richTextBox2.Text = "a";
             data = await okuma;
 
             richTextBox1.Text = data;
