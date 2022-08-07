@@ -28,7 +28,7 @@ namespace TaskFormApp
 
             //async ne zaman kullanılmalı ->>>>>>>>> Eğer işlem bitmeden önce metot içerisinde yapmamız gereken farklı işler var ise async kullanmak daha iyi olacaktır.
             //-----------------------------------------------------------------------
-            
+           
 
         }
         private async void BtnReadFile_Click(object sender, EventArgs e)
