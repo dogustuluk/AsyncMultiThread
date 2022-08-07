@@ -22,12 +22,21 @@ namespace TaskFormApp
         }
         private void Form1_Load(object sender, EventArgs e)
         {
+            //Asenktron metotları istersek await ile sonuçlarını hemen alabiliriz, istersek de dönen sonucu bir text'e aktarıp daha sonra alabiliriz.
 
         }
         private async void BtnReadFile_Click(object sender, EventArgs e)
         {
             //dosya okuma işlemini gerçekleştiriyoruz.
-            string data = await ReadFileAsync(); //await vermemizin sebebi ise alt satırda bu satırdan gelecek olan data ile ilgili işlem yaptığımız için.
+          //Task(async-await ders 1)  // string data = await ReadFileAsync(); //await vermemizin sebebi ise alt satırda bu satırdan gelecek olan data ile ilgili işlem yaptığımız için.
+          
+            //Task(async-await ders 2)
+            string data = String.Empty;
+            Task<String> okuma = ReadFileAsync(); //await kullanmadığımız için "ReadFileAsync()" metodunu çağırdığımız zaman okuma işlemi başlayacaktır.
+
+            richTextBox2.Text = await new HttpClient().GetStringAsync("https://www.google.com"); //await ile alt satıra geçmesi, buraya datanın gelmesine bağlıdır. Mutlaka datanın gelmesini bekleyecek.
+
+            data = await okuma;
 
             richTextBox1.Text = data;
         }

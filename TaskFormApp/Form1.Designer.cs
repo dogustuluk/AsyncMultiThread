@@ -32,13 +32,15 @@
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.BtnCounter = new System.Windows.Forms.Button();
             this.textBoxCounter = new System.Windows.Forms.TextBox();
+            this.richTextBox2 = new System.Windows.Forms.RichTextBox();
             this.SuspendLayout();
             // 
             // BtnReadFile
             // 
-            this.BtnReadFile.Location = new System.Drawing.Point(31, 28);
+            this.BtnReadFile.Location = new System.Drawing.Point(23, 23);
+            this.BtnReadFile.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.BtnReadFile.Name = "BtnReadFile";
-            this.BtnReadFile.Size = new System.Drawing.Size(135, 42);
+            this.BtnReadFile.Size = new System.Drawing.Size(101, 34);
             this.BtnReadFile.TabIndex = 0;
             this.BtnReadFile.Text = "Dosya Oku";
             this.BtnReadFile.UseVisualStyleBackColor = true;
@@ -46,17 +48,19 @@
             // 
             // richTextBox1
             // 
-            this.richTextBox1.Location = new System.Drawing.Point(31, 99);
+            this.richTextBox1.Location = new System.Drawing.Point(23, 80);
+            this.richTextBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(235, 202);
+            this.richTextBox1.Size = new System.Drawing.Size(177, 165);
             this.richTextBox1.TabIndex = 1;
             this.richTextBox1.Text = "";
             // 
             // BtnCounter
             // 
-            this.BtnCounter.Location = new System.Drawing.Point(317, 28);
+            this.BtnCounter.Location = new System.Drawing.Point(238, 23);
+            this.BtnCounter.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.BtnCounter.Name = "BtnCounter";
-            this.BtnCounter.Size = new System.Drawing.Size(135, 42);
+            this.BtnCounter.Size = new System.Drawing.Size(101, 34);
             this.BtnCounter.TabIndex = 2;
             this.BtnCounter.Text = "Sayaç Arttır";
             this.BtnCounter.UseVisualStyleBackColor = true;
@@ -64,20 +68,31 @@
             // 
             // textBoxCounter
             // 
-            this.textBoxCounter.Location = new System.Drawing.Point(317, 99);
+            this.textBoxCounter.Location = new System.Drawing.Point(238, 80);
+            this.textBoxCounter.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.textBoxCounter.Name = "textBoxCounter";
-            this.textBoxCounter.Size = new System.Drawing.Size(135, 22);
+            this.textBoxCounter.Size = new System.Drawing.Size(102, 20);
             this.textBoxCounter.TabIndex = 3;
+            // 
+            // richTextBox2
+            // 
+            this.richTextBox2.Location = new System.Drawing.Point(482, 23);
+            this.richTextBox2.Name = "richTextBox2";
+            this.richTextBox2.Size = new System.Drawing.Size(100, 222);
+            this.richTextBox2.TabIndex = 4;
+            this.richTextBox2.Text = "";
             // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(600, 366);
+            this.Controls.Add(this.richTextBox2);
             this.Controls.Add(this.textBoxCounter);
             this.Controls.Add(this.BtnCounter);
             this.Controls.Add(this.richTextBox1);
             this.Controls.Add(this.BtnReadFile);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "Form1";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
@@ -92,6 +107,7 @@
         private System.Windows.Forms.RichTextBox richTextBox1;
         private System.Windows.Forms.Button BtnCounter;
         private System.Windows.Forms.TextBox textBoxCounter;
+        private System.Windows.Forms.RichTextBox richTextBox2;
     }
 }
 
