@@ -19,6 +19,9 @@ namespace TaskConsoleApp.WhenAll
     { //WhenAll(task1,task2,task3,....) metodu
       //bu metot; parametre olarak task array alır ve bu array içerisindeki task'lerin tamamı sonuçlanıncaya kadar bekler. Hepsi sonuçlanınca tüm dataları döner.
 
+      //WhenAny(task1,task2,task3,...) metodu
+      //-> Task array'i alır parametre olarak. Bu taskler içerisinde de ilk biteni alır, geriye text olarak döner.
+
         private async static Task Main(string[] args)
         {
             Console.WriteLine("Main Thread : " + Thread.CurrentThread.ManagedThreadId);
@@ -38,6 +41,12 @@ namespace TaskConsoleApp.WhenAll
                 taskList.Add(GetContentAsync(x));
             });
 
+            //WhenAny start
+            var FirstData = await Task.WhenAny(taskList);
+            Console.WriteLine($"{FirstData.Result.Site} - {FirstData.Result.Len}");
+            //WhenAny end
+
+
             //var contents = await Task.WhenAll(taskList.ToArray()); //await kullanmasaydık text Content alacaktık, fakat await kullandığımız için tüm data alım işlemi bittikten sonra tipi Content array olacak.
 
             //contents.ToList().ForEach (x =>
@@ -46,16 +55,16 @@ namespace TaskConsoleApp.WhenAll
             //}) ;
 
             //await kullanmadan yapmak istersek >>>
-            var contentsNoAwait = Task.WhenAll(taskList.ToArray());
-            Console.WriteLine("WhenAll metodundan await çıkarıldı. Başka işler yapılıyor bu satırlarda");
+         //   var contentsNoAwait = Task.WhenAll(taskList.ToArray());
+         //   Console.WriteLine("WhenAll metodundan await çıkarıldı. Başka işler yapılıyor bu satırlarda");
 
-            var data = await contentsNoAwait;
-         //   Console.WriteLine("await olmadan okunacak olan datalar listeleniyor");
+         //   var data = await contentsNoAwait;
+         ////   Console.WriteLine("await olmadan okunacak olan datalar listeleniyor");
 
-            data.ToList().ForEach(x =>
-           {
-               Console.WriteLine($"site adı: {x.Site} ___ boyutu: {x.Len}");
-           });
+         //   data.ToList().ForEach(x =>
+         //  {
+         //      Console.WriteLine($"site adı: {x.Site} ___ boyutu: {x.Len}");
+         //  });
 
         }
 
