@@ -20,6 +20,7 @@ namespace TaskThreadApp
          * Hangi metotlaro çalışıtırmak uygundur; -> işlemcimizi yoracak olan işlemleri farklı bir thread'te çalıştırmak uygundur.(yoğun matematiksel işlemler içerdiği zaman), (antivirüs taraması yaparken[tüm dosyaları arayıp virüs olup olmadığını kontrol ediyor])
          * (dosyaya yazarke, dosyadan data okurken, veri tabanına data yazarken, veri tabanında okurken, web sayfasına istek yaparken) ayrı bir thread kullanmak uygun değildir. Belki bu işlemler yapılırken herhangi bir thread kullanılmayacaktır. bu işlemlerde best practise olarak asenkron programlama yapıcaz.
          */
+
         public static int Counter { get; set; } = 0;
         public Form1()
         {
