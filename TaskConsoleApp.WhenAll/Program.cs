@@ -19,17 +19,18 @@ namespace TaskConsoleApp.WhenAll
     { //WhenAll(task1,task2,task3,....) metodu
       //bu metot; parametre olarak task array alır ve bu array içerisindeki task'lerin tamamı sonuçlanıncaya kadar bekler. Hepsi sonuçlanınca tüm dataları döner.
 
-      //WhenAny(task1,task2,task3,...) metodu
-      //-> Task array'i alır parametre olarak. Bu taskler içerisinde de ilk biteni alır, geriye text olarak döner.
+        //WhenAny(task1,task2,task3,...) metodu
+        //-> Task array'i alır parametre olarak. Bu taskler içerisinde de ilk biteni alır, geriye text olarak döner.
 
-      //WaitAll(task1,task2,task3,...) metodu
-      //task array alır ve task'ler tamamlanana kadar bekler. WhenAll metodundan farkı ise; whenAll metodu ana thread'i bloklamıyorken, WaitAll metodu bloklama işlemini gerçekleştirmektedir. UI Thread'i(Main thread'i) bloklamaktadır. Kullanılması çok fazla tercih edilmez. whenAll metodundan farkı ise parametre olarak milisaniye cinsinden bir parametre alır. Vermiş olduğumuz görevler parametrede vermiş olduğumuz süre içerisinde yapılırsa true, yapılmazsa false dönmektedir.
+        //WaitAll(task1,task2,task3,...) metodu
+        //task array alır ve task'ler tamamlanana kadar bekler. WhenAll metodundan farkı ise; whenAll metodu ana thread'i bloklamıyorken, WaitAll metodu bloklama işlemini gerçekleştirmektedir. UI Thread'i(Main thread'i) bloklamaktadır. Kullanılması çok fazla tercih edilmez. whenAll metodundan farkı ise parametre olarak milisaniye cinsinden bir parametre alır. Vermiş olduğumuz görevler parametrede vermiş olduğumuz süre içerisinde yapılırsa true, yapılmazsa false dönmektedir.
 
-      //WaitAny metodu
-      //WaitAll metodu gibi bloklayan bir yapıdadır. Nerede çağırılıyor ise o thread'i bloklar. array almaktadır. bu array içerisinde herhangi birisi tamamlandığı zaman geriye bir integer değer döner. Bu integer değer ise tamamlanan task'in index numarasıdır. bu index numarası üzerinden tamamlanan task'i alabiliriz. milisaniye alır.
-      
-      //Delay metodu
-      //Asenkron bir şekilde gecikme gerçekleştirir fakat güncel thread'i bu işlemi yaparken bloklamaz.
+        //WaitAny metodu
+        //WaitAll metodu gibi bloklayan bir yapıdadır. Nerede çağırılıyor ise o thread'i bloklar. array almaktadır. bu array içerisinde herhangi birisi tamamlandığı zaman geriye bir integer değer döner. Bu integer değer ise tamamlanan task'in index numarasıdır. bu index numarası üzerinden tamamlanan task'i alabiliriz. milisaniye alır.
+
+        //Delay metodu
+        //Asenkron bir şekilde gecikme gerçekleştirir fakat güncel thread'i bu işlemi yaparken bloklamaz.
+
 
         private async static Task Main(string[] args)
         {

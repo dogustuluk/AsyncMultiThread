@@ -5,11 +5,13 @@ VisualStudioVersion = 17.1.32328.378
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaskFormApp", "TaskFormApp\TaskFormApp.csproj", "{D50B2C06-1140-4C4F-905D-2E676091BB0A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaskWebApp.API", "TaskWebApp.API\TaskWebApp.API.csproj", "{1C658EF9-D2E8-49B1-83F0-E092567585D8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TaskWebApp.API", "TaskWebApp.API\TaskWebApp.API.csproj", "{1C658EF9-D2E8-49B1-83F0-E092567585D8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaskConsoleApp", "TaskConsoleApp\TaskConsoleApp.csproj", "{0E8ADF89-6AF1-44B0-B07E-31C718F8949D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TaskConsoleApp", "TaskConsoleApp\TaskConsoleApp.csproj", "{0E8ADF89-6AF1-44B0-B07E-31C718F8949D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaskConsoleApp.WhenAll", "TaskConsoleApp.WhenAll\TaskConsoleApp.WhenAll.csproj", "{067CB999-276F-4B8C-9741-D2B3C1762EC4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TaskConsoleApp.WhenAll", "TaskConsoleApp.WhenAll\TaskConsoleApp.WhenAll.csproj", "{067CB999-276F-4B8C-9741-D2B3C1762EC4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaskThreadApp", "TaskThreadApp\TaskThreadApp.csproj", "{7B3BD4B6-5366-4CBF-A2A9-89E6E5E3B6EA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{067CB999-276F-4B8C-9741-D2B3C1762EC4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{067CB999-276F-4B8C-9741-D2B3C1762EC4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{067CB999-276F-4B8C-9741-D2B3C1762EC4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7B3BD4B6-5366-4CBF-A2A9-89E6E5E3B6EA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7B3BD4B6-5366-4CBF-A2A9-89E6E5E3B6EA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7B3BD4B6-5366-4CBF-A2A9-89E6E5E3B6EA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7B3BD4B6-5366-4CBF-A2A9-89E6E5E3B6EA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
