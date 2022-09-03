@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.Net.Http;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace TaskWebApp.API.Controllers
@@ -12,6 +13,7 @@ namespace TaskWebApp.API.Controllers
         [HttpGet]
         public async Task<IActionResult> GetContentAsync()
         {
+            Thread.Sleep(5000);
             //Bu api ile çalışan thread herhangi bir şekilde bloklanmış olmuyor. Eğer ilgili thread burada çalışmasına devam ederken bir başka request'i de handle edebilecek durumdadır.
 
             var mytask = new HttpClient().GetStringAsync("https://www.google.com"); //await koymadık yani metot çalıştığı zaman bu istek başlatılacak fakat herhangi bir sonuç almıyor olucaz.
