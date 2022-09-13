@@ -9,6 +9,7 @@ namespace TaskInstance
      * async metot çağırdığımızda geriye yeni bir task instance'ı döner (nesne örneği).
      * bu property ile dönen datayı alabiliriz. fakat bunun bir dezavantajı vardır. ->>> bu property'si o andaki thread'i bloklar.
      * neden ihtiyaç duyulur ->> normal bir metot içerisinden async metot çağırmak istersek bunu kullanarak istediğimiz datayı alabiliriz.
+     * datanın geldiğinden eminsek kullanabiliriz.
      */
     internal class Program
     {
