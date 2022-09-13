@@ -15,11 +15,13 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaskThreadApp", "TaskThread
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TaskConsoleApp2.StartNew", "TaskConsoleApp2.StartNew\TaskConsoleApp2.StartNew.csproj", "{E54FED7C-C30E-44CF-BF1D-43BC1636BBF8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaskConsoleApp.FromResult", "TaskConsoleApp.FromResult\TaskConsoleApp.FromResult.csproj", "{01B4852E-0539-41FA-9942-C88A0566B491}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TaskConsoleApp.FromResult", "TaskConsoleApp.FromResult\TaskConsoleApp.FromResult.csproj", "{01B4852E-0539-41FA-9942-C88A0566B491}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaskCancellationFormApp", "TaskCancellationFormApp\TaskCancellationFormApp.csproj", "{0A0DB74A-C72E-440C-BDFC-1C66272224CA}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TaskCancellation2WebApp.API", "TaskCancellation2WebApp.API\TaskCancellation2WebApp.API.csproj", "{BACB30E2-7446-4E40-B46D-1F67E0159F0F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaskInstance", "TaskInstance\TaskInstance.csproj", "{104B0569-B4B1-4FDE-B52D-1DC77A402F3B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -63,6 +65,10 @@ Global
 		{BACB30E2-7446-4E40-B46D-1F67E0159F0F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BACB30E2-7446-4E40-B46D-1F67E0159F0F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BACB30E2-7446-4E40-B46D-1F67E0159F0F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{104B0569-B4B1-4FDE-B52D-1DC77A402F3B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{104B0569-B4B1-4FDE-B52D-1DC77A402F3B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{104B0569-B4B1-4FDE-B52D-1DC77A402F3B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{104B0569-B4B1-4FDE-B52D-1DC77A402F3B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
