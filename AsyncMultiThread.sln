@@ -25,6 +25,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaskInstance", "TaskInstanc
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaskValueTaskAndTaskLifeCycle", "TaskValueTaskAndTaskLifeCycle\TaskValueTaskAndTaskLifeCycle.csproj", "{ED76EFC5-ABF9-46E7-92D0-08AD8644BC0C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaskParallelLibrary(TPL)", "TaskParallelLibrary(TPL)\TaskParallelLibrary(TPL).csproj", "{F6863F9F-4069-4B4B-A788-F1A5EEDF1489}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -75,6 +77,10 @@ Global
 		{ED76EFC5-ABF9-46E7-92D0-08AD8644BC0C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{ED76EFC5-ABF9-46E7-92D0-08AD8644BC0C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{ED76EFC5-ABF9-46E7-92D0-08AD8644BC0C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F6863F9F-4069-4B4B-A788-F1A5EEDF1489}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F6863F9F-4069-4B4B-A788-F1A5EEDF1489}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F6863F9F-4069-4B4B-A788-F1A5EEDF1489}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F6863F9F-4069-4B4B-A788-F1A5EEDF1489}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
