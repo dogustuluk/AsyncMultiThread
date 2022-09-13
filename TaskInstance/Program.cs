@@ -15,14 +15,34 @@ namespace TaskInstance
     {
         private async static Task Main(string[] args)
         {
-            Console.WriteLine(GetData());
+            //property:Result
+            //Console.WriteLine(GetData());
 
 
+
+            //Instance Properties
+            /*
+             * aşağıdakiler bool değerler içerir
+             * IsCanceled -> iptal edilme durumu
+             * IsCompleted -> tamamlanma durumu. başarılı ya da başarısız olmasına bakmaz.
+             * IsCompletedSuccessfully -> herhangi bir hata fırlatmadan başarıyla sonuçlandığını gösterir.
+             * IsFaulted -> bir hata meydana gelme durumu
+             */
+            Task mytask = Task.Run(() =>
+            {
+                Console.WriteLine("mytask çalıştı");
+            });
+            
+            await mytask;
+
+            Console.WriteLine("işlem bitti");
         }
-        public static string GetData()
-        {
-            var task = new HttpClient().GetStringAsync("https://www.google.com");
-            return task.Result; //task değişkeninin sonucu 5sn sürüyorsa bu satıra geldiğinde o anki thread'i bloklar. buradan sonuç dönünceye kadar thread bloklanacağından dolayı responsive'liği kaybederiz. form app ise pencere oynatması, herhangi bir butona tıklama gibi işlemleri yapamaz, ekran donacaktır.
-        }
+
+        //public static string GetData()
+        //{
+        //    //property:Result
+        //    //var task = new HttpClient().GetStringAsync("https://www.google.com");
+        //    //return task.Result; //task değişkeninin sonucu 5sn sürüyorsa bu satıra geldiğinde o anki thread'i bloklar. buradan sonuç dönünceye kadar thread bloklanacağından dolayı responsive'liği kaybederiz. form app ise pencere oynatması, herhangi bir butona tıklama gibi işlemleri yapamaz, ekran donacaktır.
+        //}
     }
 }
