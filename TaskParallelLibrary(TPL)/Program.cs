@@ -36,6 +36,48 @@ namespace TaskParallelLibrary_TPL_
     {
         static void Main(string[] args)
         {
+            //Stopwatch sw = new Stopwatch();
+            //sw.Start();
+
+            //string picturesPath = @"C:\Users\dogus\Pictures\TPL";
+
+            //var files = Directory.GetFiles(picturesPath);//dosyaları aktarmak için. her bir dosyanın yolunu alır.
+
+            //Parallel.ForEach(files, (item) =>
+            //{
+            //    Console.WriteLine("thread no: " + Thread.CurrentThread.ManagedThreadId);
+
+            //    Image img = new Bitmap(item);
+
+            //    var thumbnail = img.GetThumbnailImage(50, 50, () => false,IntPtr.Zero);
+
+            //    thumbnail.Save(Path.Combine(picturesPath, "thumbnail",Path.GetFileName(item)));
+
+
+            //});
+            //sw.Start();
+            //Console.WriteLine("İşlem Bitti: "+sw.ElapsedMilliseconds);
+
+            //sw.Reset();
+
+            //sw.Start();
+            //files.ToList().ForEach(x =>
+            //{
+            //    Console.WriteLine("thread no: " + Thread.CurrentThread.ManagedThreadId);
+
+            //    Image img = new Bitmap(x);
+
+            //    var thumbnail = img.GetThumbnailImage(50, 50, () => false, IntPtr.Zero);
+
+            //    thumbnail.Save(Path.Combine(picturesPath, "thumbnail", Path.GetFileName(x)));
+            //});
+            //sw.Stop(); Console.WriteLine("İşlem Bitti: " + sw.ElapsedMilliseconds);
+
+            //parallel.ForEach1
+
+            //parallel.ForEach2
+            long FilesByte = 0;
+
             Stopwatch sw = new Stopwatch();
             sw.Start();
 
@@ -47,33 +89,13 @@ namespace TaskParallelLibrary_TPL_
             {
                 Console.WriteLine("thread no: " + Thread.CurrentThread.ManagedThreadId);
 
-                Image img = new Bitmap(item);
+                FileInfo f = new FileInfo(item);
 
-                var thumbnail = img.GetThumbnailImage(50, 50, () => false,IntPtr.Zero);
-
-                thumbnail.Save(Path.Combine(picturesPath, "thumbnail",Path.GetFileName(item)));
-
+                Interlocked.Add(ref FilesByte, f.Length); //bu metot-> herhangi bir thread buraya geldiğinde, bu değer eklenene kadar başka bir thread'in FilesByte'a erişmesini engelliyor.
 
             });
-            sw.Start();
-            Console.WriteLine("İşlem Bitti: "+sw.ElapsedMilliseconds);
-            
-            sw.Reset();
-            
-            sw.Start();
-            files.ToList().ForEach(x =>
-            {
-                Console.WriteLine("thread no: " + Thread.CurrentThread.ManagedThreadId);
 
-                Image img = new Bitmap(x);
-
-                var thumbnail = img.GetThumbnailImage(50, 50, () => false, IntPtr.Zero);
-
-                thumbnail.Save(Path.Combine(picturesPath, "thumbnail", Path.GetFileName(x)));
-            });
-            sw.Stop(); Console.WriteLine("İşlem Bitti: " + sw.ElapsedMilliseconds);
-
-
+            Console.WriteLine("toplam boyut: "+ FilesByte.ToString());
         }
     }
 }
