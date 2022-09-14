@@ -115,6 +115,29 @@ namespace TaskParallelLibrary_TPL_
 
             Console.WriteLine("Total Byte: " + totalByte);
 
+
+            //Parallel.For/ForEach Thread-LocalVariables
+            //her bir thread kendine düşen payı kendi içerisinde toplasın ve en son eklesin istersek;
+            //bu yöntem daha performanslı çalışacaktır.
+            //eğer shared.data'ya ulaşmayacak isek pek fazla kullanmaya gerek yoktur. fakat illa shared data'da kullanılacak diye de bir durum yoktur. thread'lerin yapacağı işi toplu olarak da kaydetmek istersek kullanabiliriz.
+            int total = 0;
+            Parallel.ForEach(Enumerable.Range(0, 100).ToList(), () => 0, (x, loop, subtotal) =>
+             {
+                 subtotal += x;
+                 return subtotal;
+             },(y)=>Interlocked.Add(ref total, y));
+
+            Console.WriteLine(total);
+
+            Parallel.For(0, 100, () => 0, (x, loop, subtotal) =>
+                 {
+                     subtotal += x;
+                     return subtotal;
+                 },(y)=>Interlocked.Add(ref total,y));
+            Console.WriteLine(total);
+            //Parallel.For/ForEach Thread-LocalVariables
+            
+            
         }
     }
 }

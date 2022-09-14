@@ -21,11 +21,13 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaskCancellationFormApp", "
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TaskCancellation2WebApp.API", "TaskCancellation2WebApp.API\TaskCancellation2WebApp.API.csproj", "{BACB30E2-7446-4E40-B46D-1F67E0159F0F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaskInstance", "TaskInstance\TaskInstance.csproj", "{104B0569-B4B1-4FDE-B52D-1DC77A402F3B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TaskInstance", "TaskInstance\TaskInstance.csproj", "{104B0569-B4B1-4FDE-B52D-1DC77A402F3B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaskValueTaskAndTaskLifeCycle", "TaskValueTaskAndTaskLifeCycle\TaskValueTaskAndTaskLifeCycle.csproj", "{ED76EFC5-ABF9-46E7-92D0-08AD8644BC0C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TaskValueTaskAndTaskLifeCycle", "TaskValueTaskAndTaskLifeCycle\TaskValueTaskAndTaskLifeCycle.csproj", "{ED76EFC5-ABF9-46E7-92D0-08AD8644BC0C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaskParallelLibrary(TPL)", "TaskParallelLibrary(TPL)\TaskParallelLibrary(TPL).csproj", "{F6863F9F-4069-4B4B-A788-F1A5EEDF1489}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TaskParallelLibrary(TPL)", "TaskParallelLibrary(TPL)\TaskParallelLibrary(TPL).csproj", "{F6863F9F-4069-4B4B-A788-F1A5EEDF1489}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ParallelForForEachCancellationTokenApp", "ParallelForForEachCancellationTokenApp\ParallelForForEachCancellationTokenApp.csproj", "{90A28350-C525-4976-9AA2-FDACB333A9BE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -81,6 +83,10 @@ Global
 		{F6863F9F-4069-4B4B-A788-F1A5EEDF1489}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F6863F9F-4069-4B4B-A788-F1A5EEDF1489}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F6863F9F-4069-4B4B-A788-F1A5EEDF1489}.Release|Any CPU.Build.0 = Release|Any CPU
+		{90A28350-C525-4976-9AA2-FDACB333A9BE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{90A28350-C525-4976-9AA2-FDACB333A9BE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{90A28350-C525-4976-9AA2-FDACB333A9BE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{90A28350-C525-4976-9AA2-FDACB333A9BE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
