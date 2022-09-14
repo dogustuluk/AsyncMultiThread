@@ -36,6 +36,8 @@ namespace TaskParallelLibrary_TPL_
     {
         static void Main(string[] args)
         {
+            //parallel.ForEach1
+
             //Stopwatch sw = new Stopwatch();
             //sw.Start();
 
@@ -76,26 +78,43 @@ namespace TaskParallelLibrary_TPL_
             //parallel.ForEach1
 
             //parallel.ForEach2
-            long FilesByte = 0;
+            //long FilesByte = 0;
 
-            Stopwatch sw = new Stopwatch();
-            sw.Start();
+            //Stopwatch sw = new Stopwatch();
+            //sw.Start();
 
-            string picturesPath = @"C:\Users\dogus\Pictures\TPL";
+            //string picturesPath = @"C:\Users\dogus\Pictures\TPL";
 
-            var files = Directory.GetFiles(picturesPath);//dosyaları aktarmak için. her bir dosyanın yolunu alır.
+            //var files = Directory.GetFiles(picturesPath);//dosyaları aktarmak için. her bir dosyanın yolunu alır.
 
-            Parallel.ForEach(files, (item) =>
+            //Parallel.ForEach(files, (item) =>
+            //{
+            //    Console.WriteLine("thread no: " + Thread.CurrentThread.ManagedThreadId);
+
+            //    FileInfo f = new FileInfo(item);
+
+            //    Interlocked.Add(ref FilesByte, f.Length); //bu metot-> herhangi bir thread buraya geldiğinde, bu değer eklenene kadar başka bir thread'in FilesByte'a erişmesini engelliyor.
+
+            //});
+
+            //Console.WriteLine("toplam boyut: "+ FilesByte.ToString());
+            //parallel.ForEach2
+
+            
+            //parallel.For1
+            long totalByte = 0;
+
+            var files = Directory.GetFiles(@"C:\Users\dogus\Pictures\TPL");
+
+            Parallel.For(0, files.Length, (index) =>
             {
-                Console.WriteLine("thread no: " + Thread.CurrentThread.ManagedThreadId);
+                var file = new FileInfo(files[index]);
 
-                FileInfo f = new FileInfo(item);
-
-                Interlocked.Add(ref FilesByte, f.Length); //bu metot-> herhangi bir thread buraya geldiğinde, bu değer eklenene kadar başka bir thread'in FilesByte'a erişmesini engelliyor.
-
+                Interlocked.Add(ref totalByte, file.Length);
             });
 
-            Console.WriteLine("toplam boyut: "+ FilesByte.ToString());
+            Console.WriteLine("Total Byte: " + totalByte);
+
         }
     }
 }
