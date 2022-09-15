@@ -28,6 +28,12 @@ namespace TaskParallelLanguageIntegratedQuery_PLINQ_
      */
     internal class Program
     {
+        private static void WriteLog(Product p)
+        {
+            //log'a yazma
+            Console.WriteLine(p.Name + "log'a kaydedildi.");
+        }
+
         //asParallel
         //private static bool İslem(int x)
         //{
@@ -65,13 +71,30 @@ namespace TaskParallelLanguageIntegratedQuery_PLINQ_
 
 
             //database first
+            //parallel sonrası yazılan kodlar sql server'a gitmiyor.
+            //çünkü plinq'in amacı elimde varolan bir array üzerinde bir işlem yapmak istiyorsak ve bu işlemleri de paralel olarak yapmak istersek kullanırız.
+            //neden ihtiyaç duyaruz? -> elimizde bir array varsa, g
             AdventureWorks2019Context context = new AdventureWorks2019Context();
 
-            context.Products.Take(10).ToList().ForEach(p =>
+            var product = (from p in context.Products.AsParallel()
+                           where p.ListPrice > 10M
+                           select p).Take(10);
+
+            //tek seferde yazabiliriz. Ama çok büyük bir sorgu var ise okunabilirlik azalacaktır. komplek sorgularda yukarıdaki gibi yazarsak daha fazla okunabilir olacaktır.
+            var product2 = context.Products.AsParallel().Where(p => p.ListPrice > 10M).Take(10);
+
+            context.Products.AsParallel().ForAll(p =>
+            {
+                WriteLog(p);
+            });
+
+
+            product.ForAll(p =>
             {
                 Console.WriteLine(p.Name);
             });
-
+            
+           
 
             //database first
         }
