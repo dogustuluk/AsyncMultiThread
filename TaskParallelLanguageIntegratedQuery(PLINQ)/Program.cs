@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using System.Threading;
+using TaskParallelLanguageIntegratedQuery_PLINQ_.Models;
 
 namespace TaskParallelLanguageIntegratedQuery_PLINQ_
 {
@@ -28,40 +29,51 @@ namespace TaskParallelLanguageIntegratedQuery_PLINQ_
     internal class Program
     {
         //asParallel
-        private static bool İslem(int x)
-        {
-            return x % 2 == 0;
-        }
+        //private static bool İslem(int x)
+        //{
+        //    return x % 2 == 0;
+        //}
         static void Main(string[] args)
         {
-            var array = Enumerable.Range(1, 500).ToList();
+            //var array = Enumerable.Range(1, 500).ToList();
 
-            var newArray = array.AsParallel().Where(İslem);
+            //var newArray = array.AsParallel().Where(İslem);
 
-            //asParallel
+            ////asParallel
+            ////newArray.ToList().ForEach(x =>
+            ////{
+            ////    Console.WriteLine(x);
+            ////});
+            ////asParallel
+
+            ////ForAll
             //newArray.ToList().ForEach(x =>
             //{
+            //    Thread.Sleep(2000);
             //    Console.WriteLine(x);
+            //    //bu şekilde kullanırsak performans kaybı yaşarız çünkü bu yapı senkron bir şekilde tek bir thread üzerinde çalışmaktadır.
+            //    //her bir veri tek tek 2sn içerisinde yazılır.
             //});
-            //asParallel
 
-            //ForAll
-            newArray.ToList().ForEach(x =>
+            //newArray.ForAll(x =>
+            //{
+            //    Thread.Sleep(2000);
+            //    Console.WriteLine(x);
+            //    //o anda kaç tane thread çalışıyor ise her 2sn'de bir o kadar veri yazılır. 5 thread çalışıyor ise 2sn'de 5 adet veriyi ekrana yazar.
+            //});
+
+
+
+            //database first
+            AdventureWorks2019Context context = new AdventureWorks2019Context();
+
+            context.Products.Take(10).ToList().ForEach(p =>
             {
-                Thread.Sleep(2000);
-                Console.WriteLine(x);
-                //bu şekilde kullanırsak performans kaybı yaşarız çünkü bu yapı senkron bir şekilde tek bir thread üzerinde çalışmaktadır.
-                //her bir veri tek tek 2sn içerisinde yazılır.
+                Console.WriteLine(p.Name);
             });
 
-            newArray.ForAll(x =>
-            {
-                Thread.Sleep(2000);
-                Console.WriteLine(x);
-                //o anda kaç tane thread çalışıyor ise her 2sn'de bir o kadar veri yazılır. 5 thread çalışıyor ise 2sn'de 5 adet veriyi ekrana yazar.
-            });
 
-
+            //database first
         }
     }
 }
