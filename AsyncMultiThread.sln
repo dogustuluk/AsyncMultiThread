@@ -29,6 +29,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TaskParallelLibrary(TPL)", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ParallelForForEachCancellationTokenApp", "ParallelForForEachCancellationTokenApp\ParallelForForEachCancellationTokenApp.csproj", "{90A28350-C525-4976-9AA2-FDACB333A9BE}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaskParallelLanguageIntegratedQuery(PLINQ)", "TaskParallelLanguageIntegratedQuery(PLINQ)\TaskParallelLanguageIntegratedQuery(PLINQ).csproj", "{225BEF93-B298-46B1-A71A-6D7D4B8C30EB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -87,6 +89,10 @@ Global
 		{90A28350-C525-4976-9AA2-FDACB333A9BE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{90A28350-C525-4976-9AA2-FDACB333A9BE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{90A28350-C525-4976-9AA2-FDACB333A9BE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{225BEF93-B298-46B1-A71A-6D7D4B8C30EB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{225BEF93-B298-46B1-A71A-6D7D4B8C30EB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{225BEF93-B298-46B1-A71A-6D7D4B8C30EB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{225BEF93-B298-46B1-A71A-6D7D4B8C30EB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
