@@ -35,6 +35,19 @@ namespace TaskParallelLanguageIntegratedQuery_PLINQ_
      * WithDegreeOfParalleism metodu
      * bu metot sorgularımızı paralel olarak kaç tane işlemcide çalışacağına imkan vermektedir.
      * 
+     * 
+     * WithExecuteMode
+     * yazmış olduğumuz sorgular her zaman paralel olarak çalışmaz. burada plinq yazılmış olan sorgunun paralel olarak çalışıp çalışamayacağının kontrolünü yapar. kontrol sonucunda senkron ya da paralel olarak çalıştırır.
+     * eğer illaki paralel olarak çalıştıracaksak -> WithExecuteMode adlı metot devreye girmektedir.
+     * withexecutemode -> bir enum değeri alır. default ve force parametresi alır.
+     * default parametresi, karar verme aşamasını plinq'e bırakır. plinq'e bırakılması daha doğrudur.
+     * test amaçlı paralel olarak çalışmasını istersek kullanırız.
+     * 
+     * 
+     * 
+     * AsOrdered
+     * bir array içerisindeki sıralama ne ise o sıralamanın aynı şekilde kalmasını sağlıyor. eğer kullanmazsak sıralama çıktıda değişebilir.
+     * bu metodu kullanmak ekstra bir performans kaybına sebebiyet verecektir.
      */
     internal class Program
     {
@@ -115,8 +128,17 @@ namespace TaskParallelLanguageIntegratedQuery_PLINQ_
             });
 
 
-            
-           
+            //WithExecuteMode
+            context.Products.AsParallel().WithExecutionMode(ParallelExecutionMode.ForceParallelism).Where(p => p.ListPrice >10M).ForAll(p =>
+            {
+                WriteLog(p);
+            });
+
+            //AsOrdered
+            context.Products.AsParallel().AsOrdered().Where(p => p.ListPrice > 10M).ToList().ForEach(x =>
+            {
+                Console.WriteLine($"{x.Name} - {x.ListPrice}");
+            });
 
             //database first
         }
