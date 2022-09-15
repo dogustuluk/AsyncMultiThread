@@ -14,8 +14,12 @@ namespace TaskParallelLanguageIntegratedQuery_PLINQ_
      * bununla beraber linq sorgularımızı paralel bir şekilde çalıştırabiliriz. yani sorgularımızı eş zamanlı olarak  birden fazla thread üzerinde çalıştırabiliriz.
      * plinq sorgularının performansı -> sorgunun çalıştırıldığı sistemin işlemci sayısına ve çekirdek sayısına bağlıdır. ne kadar yüksek ise sorgular o kadar performanslı çalışmaktadır.
      * 
+     * 
+     * 
      * Array.AsParallel() -> yazmak zorundayız.
      * Paralel olan işlemlerin işlenmesi verilecek olan array içerisindeki sıraya göre ilerlemez, farklı bir sıralama ile gelebilmektedir. burada senkron bir yapı bulunmamaktadır.
+     * 
+     * 
      * 
      * ForAll-----------
      * bu metot, plinq sorgusundan dönen sonuçları eğer birden fazla thread'de çalıştırmak istersek kullanırız.
@@ -25,6 +29,12 @@ namespace TaskParallelLanguageIntegratedQuery_PLINQ_
      * sonuç: eğer plinq kullanıyorsak ve gelen datadaki sonuçlarda dönmek istiyorsak normal foreach kullanmayız, daha performanslı olması için forall ile döneriz.
      * senkron bir yapıda çalışmaz.
      * her zaman parallel sorgu yazıp daha yüksek bir performans elde edebilmemiz olası değildir. kendi senaryomuza göre bir yapı kurmalıyız. eğer az sayıda veri içeren bir arrayimiz varsa(100,200) gibi senkron çalıştırmak daha performanslı olur lakin 10bin 100bin gibi kalabalık değerlerden oluşan bir arrayimiz varsa parallel sorgu daha performanslı ve doğru bir yol olmaktadır. veya şu durum da olabilir; array'imizin içerisinde az değer vardır lakin içerisinde yoğun işlemler yapılıyordur, bu durumda da parallel bir yapı kurmalıyız.
+     * 
+     * 
+     * 
+     * WithDegreeOfParalleism metodu
+     * bu metot sorgularımızı paralel olarak kaç tane işlemcide çalışacağına imkan vermektedir.
+     * 
      */
     internal class Program
     {
@@ -79,9 +89,17 @@ namespace TaskParallelLanguageIntegratedQuery_PLINQ_
             var product = (from p in context.Products.AsParallel()
                            where p.ListPrice > 10M
                            select p).Take(10);
+            product.ForAll(p =>
+            {
+                Console.WriteLine(p.Name);
+            });
+
+
 
             //tek seferde yazabiliriz. Ama çok büyük bir sorgu var ise okunabilirlik azalacaktır. komplek sorgularda yukarıdaki gibi yazarsak daha fazla okunabilir olacaktır.
             var product2 = context.Products.AsParallel().Where(p => p.ListPrice > 10M).Take(10);
+
+
 
             context.Products.AsParallel().ForAll(p =>
             {
@@ -89,10 +107,14 @@ namespace TaskParallelLanguageIntegratedQuery_PLINQ_
             });
 
 
-            product.ForAll(p =>
+            //WithDegreeOfParalleism metodu
+            context.Products.AsParallel().WithDegreeOfParallelism(2).ForAll(p =>
             {
-                Console.WriteLine(p.Name);
+                //iki işlemcide çalışır.
+                WriteLog(p);
             });
+
+
             
            
 
