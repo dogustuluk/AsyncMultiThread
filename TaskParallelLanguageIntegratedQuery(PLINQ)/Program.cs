@@ -48,9 +48,27 @@ namespace TaskParallelLanguageIntegratedQuery_PLINQ_
      * AsOrdered
      * bir array içerisindeki sıralama ne ise o sıralamanın aynı şekilde kalmasını sağlıyor. eğer kullanmazsak sıralama çıktıda değişebilir.
      * bu metodu kullanmak ekstra bir performans kaybına sebebiyet verecektir.
+     * 
+     * 
+     * Exception Handle
+     * parallel durumlarda aynı anda birden fazla exception fırlayabilir.
+     * ilk exception'ı aldıktan sonra devam etmez, yani buradaki koda girmez.
+     * 
      */
     internal class Program
     {
+        private static bool IsControl(Product p)
+        {
+            try
+            {
+                return p.Name[2] == 'l';
+            }
+            catch (AggregateException ex)
+            {
+                Console.WriteLine($"Dizi sınırları aşıldı");
+                return false;//bu false ile beraber kod kırılmayacak ve işlemeye devam edecek. Yani hatayı aldığında program durmayacak, devam edecek.
+            }
+        }
         private static void WriteLog(Product p)
         {
             //log'a yazma
@@ -140,7 +158,33 @@ namespace TaskParallelLanguageIntegratedQuery_PLINQ_
                 Console.WriteLine($"{x.Name} - {x.ListPrice}");
             });
 
-            //database first
-        }
+
+            //exception handle
+            var products = context.Products.Take(100).ToArray();
+
+            products[3].Name = "##";
+            products[5].Name = "##"; //ilk exception'ı aldıktan sonra devam etmez, yani buradaki koda girmez.
+         
+
+            //var query = products.AsParallel().Where(p => p.Name[2]=='a');
+            var query = products.AsParallel().Where(IsControl);
+
+            try
+            {
+                query.ForAll(x =>
+                {
+                    Console.WriteLine($"{x.Name}");
+                });
+            }
+            catch (AggregateException ex) //birden fazla exception barındırabilir.
+            {
+                ex.InnerExceptions.ToList().ForEach(x =>
+                {
+                    if (x is IndexOutOfRangeException)//is keyword'ü ile true-false döner
+                        Console.WriteLine("Hata: Array sınırları dışına çıkıldı");
+                        //Console.WriteLine($"Hata: {x.GetType().Name}"); //hatanın adını spesifik olarak yakalayacak isek bu kodu yazarız.
+                });
+            }
+        } 
     }
 }
