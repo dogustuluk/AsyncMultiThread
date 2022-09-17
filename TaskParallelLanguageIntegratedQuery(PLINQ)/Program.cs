@@ -54,6 +54,9 @@ namespace TaskParallelLanguageIntegratedQuery_PLINQ_
      * parallel durumlarda aynı anda birden fazla exception fırlayabilir.
      * ilk exception'ı aldıktan sonra devam etmez, yani buradaki koda girmez.
      * 
+     * 
+     * CancellationToken
+     * 
      */
     internal class Program
     {
@@ -61,11 +64,11 @@ namespace TaskParallelLanguageIntegratedQuery_PLINQ_
         {
             try
             {
-                return p.Name[2] == 'l';
+                return p.Name[2] == 'a';
             }
             catch (AggregateException ex)
             {
-                Console.WriteLine($"Dizi sınırları aşıldı");
+                Console.WriteLine($"Dizi sınırları aşıldı :"+ex.GetType().Name);
                 return false;//bu false ile beraber kod kırılmayacak ve işlemeye devam edecek. Yani hatayı aldığında program durmayacak, devam edecek.
             }
         }
@@ -181,7 +184,8 @@ namespace TaskParallelLanguageIntegratedQuery_PLINQ_
                 ex.InnerExceptions.ToList().ForEach(x =>
                 {
                     if (x is IndexOutOfRangeException)//is keyword'ü ile true-false döner
-                        Console.WriteLine("Hata: Array sınırları dışına çıkıldı");
+                        Console.WriteLine("hata");
+                        //Console.WriteLine("Hata: Array sınırları dışına çıkıldı");
                         //Console.WriteLine($"Hata: {x.GetType().Name}"); //hatanın adını spesifik olarak yakalayacak isek bu kodu yazarız.
                 });
             }
